@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: activity-service/target/
+          path: target/
           retention-days: 1
 
   test:
@@ -59,7 +59,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-          path: activity-service/target/
+          path: target/
 
       - name: Run tests with coverage
         run: mvn test
@@ -70,8 +70,8 @@ jobs:
         with:
           name: test-reports
           path: |
-            activity-service/target/surefire-reports/
-            activity-service/target/site/jacoco/
+            target/surefire-reports/
+            target/site/jacoco/
           retention-days: 7
 
   sonarqube:
@@ -102,13 +102,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-          path: activity-service/target/
+          path: target/
 
       - name: Download test reports
         uses: actions/download-artifact@v4
         with:
           name: test-reports
-          path: activity-service/target/
+          path: target/
 
       - name: Run SonarQube analysis
         env:
@@ -139,7 +139,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-          path: activity-service/target/
+          path: target/
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
