@@ -30,7 +30,6 @@ jobs:
           cache: "maven"
 
       - name: Compile and package (skip tests)
-        working-directory: ./activity-service
         run: mvn clean package -DskipTests
 
       - name: Upload build artifacts
@@ -63,7 +62,6 @@ jobs:
           path: activity-service/target/
 
       - name: Run tests with coverage
-        working-directory: ./activity-service
         run: mvn test
 
       - name: Upload test reports
@@ -113,7 +111,6 @@ jobs:
           path: activity-service/target/
 
       - name: Run SonarQube analysis
-        working-directory: ./activity-service
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
