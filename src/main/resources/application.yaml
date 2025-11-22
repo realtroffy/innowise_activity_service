@@ -3,7 +3,7 @@ spring:
     name: activity-service
   data:
     mongodb:
-      uri: mongodb://mongo:27017/activitydb
+      uri: mongodb://localhost:27017/activitydb
   kafka:
     bootstrap-servers: localhost:9092
 
